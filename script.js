@@ -89,11 +89,6 @@ var finances = [
 
 let sum = 0;
 
-// for (let i = 0; i < finances.length; i++) {
-//     console.log(finances[i][0])
-//     console.log(finances[i][1]);
-// }
-
 ///////////// length of array
 console.log("Total Months: " + finances.length);
 
@@ -107,7 +102,7 @@ console.log("Total: " + sum)
 
 ///////////// average change in profit/losses
 
-// difference between months 
+// difference between months
 function diff(ary) {
     let financeChange = [];
     for (let i = 1; i < ary.length; i++) financeChange.push(ary[i][1] - ary[i - 1][1])
