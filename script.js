@@ -86,3 +86,73 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099],
 ];
+
+let sum = 0;
+
+// for (let i = 0; i < finances.length; i++) {
+//     console.log(finances[i][0])
+//     console.log(finances[i][1]);
+// }
+
+///////////// length of array
+console.log("Total Months: " + finances.length);
+
+///////////// total
+
+for (let i = 0; i < finances.length; i++) {
+    sum += finances[i][1];
+}
+
+console.log("Total: " + sum)
+
+///////////// average change in profit/losses
+
+// difference between months 
+function diff(ary) {
+    let financeChange = [];
+    for (let i = 1; i < ary.length; i++) financeChange.push(ary[i][1] - ary[i - 1][1])
+    return financeChange;
+}
+
+let change = diff(finances);
+
+console.log(change)
+
+// averge
+
+let count = 0;
+let total = 0;
+
+for (let i = 0; i < change.length; i++) {
+    if (change[i] !== undefined) {
+        count++
+        total += change[i];
+    }
+}
+
+let average = Math.round((total / count) * 100) / 100;
+console.log("Average Change: " + average)
+
+///////////// greatest increase in profit
+
+let greatestIncrease = change[0];
+
+for (let i = 1; i < change.length; i++) {
+    if (change[i] > greatestIncrease) {
+        greatestIncrease = change[i];
+    }
+}
+
+console.log("Greatest Increase in Profits: " + greatestIncrease);
+
+///////////// greatest decrease in profit 
+
+let greatestDecrease = change[0];
+
+for (let i = 1; i < change.length; i++) {
+    if (change[i] < greatestDecrease) {
+        greatestDecrease = change[i];
+    }
+}
+
+console.log("Greatest Decrease in Profits: " + greatestDecrease);
