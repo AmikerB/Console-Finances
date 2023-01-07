@@ -88,10 +88,15 @@ var finances = [
 ];
 
 let sum = 0;
+let change = [];
+let count = 0;
+let total = 0;
+let months = [];
+let monthlyProfit = [];
 
 ///////////// length of array
 
-console.log("Total Months: " + finances.length);
+numMonths = finances.length
 
 ///////////// total
 
@@ -99,35 +104,13 @@ for (let i = 0; i < finances.length; i++) {
     sum += finances[i][1];
 }
 
-console.log("Total: " + sum)
-
 ///////////// average change in profit/losses
-
-// difference between months
-// function diff(ary) {
-//     let financeChange = [];
-//     for (let i = 1; i < ary.length; i++) financeChange.push(ary[i][1] - ary[i - 1][1])
-//     return financeChange;
-// }
-
-// let change = diff(finances);
-
-// console.log(change)
-
-// need to re-create above as a loop:
-
-let change = [];
 
 for (let i = 1; i < finances.length; i++) {
     change.push(finances[i][1] - finances[i - 1][1]);
 }
 
-console.log(change)
-
-// averge
-
-let count = 0;
-let total = 0;
+// calculate averge
 
 for (let i = 0; i < change.length; i++) {
     if (change[i] !== undefined) {
@@ -137,69 +120,38 @@ for (let i = 0; i < change.length; i++) {
 }
 
 let average = Math.round((total / count) * 100) / 100;
-console.log("Average Change: " + average)
 
 ///////////// create variable for months 
-
-let months = [];
 
 for (let i = 1; i < finances.length; i++) {
     months.push(finances[i][0]);
 }
 
-console.log(months)
-
 ///////////// merge months and change variables into one nested array
-
-let monthlyProfit = [];
 
 for (let i = 0; i < months.length; i++) {
     monthlyProfit.push([months[i], change[i]]);
 }
 
-console.log(monthlyProfit);
-
-///////////// greatest increase in profit
-// how to find the biggest value within a nested array and display both the corresponding month and the biggest value
+///////////// month with the greatest increase in profit
 
 let max = Math.max(...change);
 
-console.log(max)
+let maxMonth = monthlyProfit[change.indexOf(max)][0];
 
-let largest = monthlyProfit[change.indexOf(max)][0];
-
-console.log(largest)
-
-
-
-// let largest = monthlyProfit[0][0];
-
-// for (let i = 0; i < monthlyProfit.length; i++) {
-//     for (let j = 1; j < monthlyProfit[i].length; j++) {
-//         if (monthlyProfit[i][j] > largest) {
-//             largest = monthlyProfit[i][j];
-//         }
-//     }
-// }
-
-// console.log("Greatest Increase in Profits: " + largest);
-
-// ///////////// greatest decrease in profit
+///////////// month with the greatest decrease in profit
 
 let min = Math.min(...change);
 
-console.log(min)
+let minMonth = monthlyProfit[change.indexOf(min)][0];
 
-let smallest = monthlyProfit[change.indexOf(min)][0];
+///////////// console.log
 
-console.log(smallest);
-
-// let greatestDecrease = change[0];
-
-// for (let i = 1; i < change.length; i++) {
-//     if (change[i] < greatestDecrease) {
-//         greatestDecrease = change[i];
-//     }
-// }
-
-// console.log("Greatest Decrease in Profits: " + greatestDecrease);
+console.log(`
+  Financial Analysis
+  ----------------------------
+  Total Months: ${numMonths}
+  Total: $${sum}
+  Average Change: $${average}
+  Greatest Increase in Profits:  ${maxMonth} $${max}
+  Greatest Decrease in Profits: ${minMonth} $${min}`);
