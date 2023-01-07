@@ -48,6 +48,8 @@ for (let i = 0; i < months.length; i++) {
 
 console.log(merge);
 
+///////////// LEFT OFF HERE /////////////
+
 // find the biggest number and display both the month and the number
 
 let largest = merge[0][0];
@@ -58,7 +60,6 @@ for (let i = 1; i < merge.length; i++) {
             largest = merge[i][j];
         }
     }
-
 }
 
 console.log(largest)
