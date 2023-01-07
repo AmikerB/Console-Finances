@@ -12,3 +12,13 @@
 - numbers in example may not be correct 
 
 for month of january make changes 0 
+
+
+
+## Help
+
+1. create difference variable 
+2. create just months variable
+3. merge strings together into nested array
+4. create loop that picks out biggest number and displays the month and the number 
+5. create loop that picks out smallest number and displays the month and the number

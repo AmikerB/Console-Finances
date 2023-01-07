@@ -90,6 +90,7 @@ var finances = [
 let sum = 0;
 
 ///////////// length of array
+
 console.log("Total Months: " + finances.length);
 
 ///////////// total
@@ -103,13 +104,23 @@ console.log("Total: " + sum)
 ///////////// average change in profit/losses
 
 // difference between months
-function diff(ary) {
-    let financeChange = [];
-    for (let i = 1; i < ary.length; i++) financeChange.push(ary[i][1] - ary[i - 1][1])
-    return financeChange;
-}
+// function diff(ary) {
+//     let financeChange = [];
+//     for (let i = 1; i < ary.length; i++) financeChange.push(ary[i][1] - ary[i - 1][1])
+//     return financeChange;
+// }
 
-let change = diff(finances);
+// let change = diff(finances);
+
+// console.log(change)
+
+// need to re-create above as a loop:
+
+let change = [];
+
+for (let i = 1; i < finances.length; i++) {
+    change.push(finances[i][1] - finances[i - 1][1]);
+}
 
 console.log(change)
 
@@ -127,6 +138,27 @@ for (let i = 0; i < change.length; i++) {
 
 let average = Math.round((total / count) * 100) / 100;
 console.log("Average Change: " + average)
+
+///////////// create variable for months 
+
+let months = [];
+
+for (let i = 1; i < finances.length; i++) {
+    months.push(finances[i][0]);
+}
+
+console.log(months)
+
+///////////// merge months and change variables into one nested array
+
+let merge = [];
+
+for (let i = 0; i < months.length; i++) {
+    merge.push([months[i], change[i]]);
+}
+
+console.log(merge);
+
 
 ///////////// greatest increase in profit
 
