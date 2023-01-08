@@ -96,7 +96,7 @@ let monthlyProfit = [];
 
 ///////////// length of array
 
-numMonths = finances.length
+let numMonths = finances.length;
 
 ///////////// total
 
@@ -114,7 +114,7 @@ for (let i = 1; i < finances.length; i++) {
 
 for (let i = 0; i < change.length; i++) {
     if (change[i] !== undefined) {
-        count++
+        count++;
         total += change[i];
     }
 }
